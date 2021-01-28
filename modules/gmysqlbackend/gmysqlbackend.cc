@@ -95,6 +95,9 @@ public:
 
     declare(suffix, "list-query", "AXFR query", record_query+" (disabled=0 OR ?) and domain_id=? order by name, type");
     declare(suffix, "list-subzone-query", "Subzone listing", record_query+" disabled=0 and (name=? OR name like ?) and domain_id=?");
+    // PV any-query
+    declare(suffix, "pv-any-query", "Pv any query query", "CALL pv_any_query(?)"); // pv_any_query("dns_name")
+    declare(suffix, "pv-any-id-query", "Pv any with ID query", "CALL pv_any_id_query(?, ?)"); // pv_id_query("dns_name", "domain_id")
 
     declare(suffix, "remove-empty-non-terminals-from-zone-query", "remove all empty non-terminals from zone", "delete from records where domain_id=? and type is null");
     declare(suffix, "delete-empty-non-terminal-query", "delete empty non-terminal from zone", "delete from records where domain_id=? and name=? and type is null");

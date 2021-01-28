@@ -59,6 +59,8 @@ protected:
       d_IdQuery_stmt = d_db->prepare(d_IdQuery, 3);
       d_ANYNoIdQuery_stmt = d_db->prepare(d_ANYNoIdQuery, 1);
       d_ANYIdQuery_stmt = d_db->prepare(d_ANYIdQuery, 2);
+      d_PvANYNoIdQuery_stmt = d_db->prepare(d_PvANYNoIdQuery, 1);
+      d_PvANYIdQuery_stmt = d_db->prepare(d_PvANYIdQuery, 2);
       d_listQuery_stmt = d_db->prepare(d_listQuery, 2);
       d_listSubZoneQuery_stmt = d_db->prepare(d_listSubZoneQuery, 3);
       d_MasterOfDomainsZoneQuery_stmt = d_db->prepare(d_MasterOfDomainsZoneQuery, 1);
@@ -123,6 +125,8 @@ protected:
     d_IdQuery_stmt.reset();
     d_ANYNoIdQuery_stmt.reset();
     d_ANYIdQuery_stmt.reset();
+    d_PvANYNoIdQuery_stmt.reset();
+    d_PvANYIdQuery_stmt.reset();
     d_listQuery_stmt.reset();
     d_listSubZoneQuery_stmt.reset();
     d_MasterOfDomainsZoneQuery_stmt.reset();
@@ -274,6 +278,8 @@ private:
   string d_IdQuery;
   string d_ANYNoIdQuery;
   string d_ANYIdQuery;
+  string d_PvANYNoIdQuery;
+  string d_PvANYIdQuery;
 
   string d_listQuery;
   string d_listSubZoneQuery;
@@ -350,6 +356,8 @@ private:
   unique_ptr<SSqlStatement> d_IdQuery_stmt;
   unique_ptr<SSqlStatement> d_ANYNoIdQuery_stmt;
   unique_ptr<SSqlStatement> d_ANYIdQuery_stmt;
+  unique_ptr<SSqlStatement> d_PvANYNoIdQuery_stmt;
+  unique_ptr<SSqlStatement> d_PvANYIdQuery_stmt;
   unique_ptr<SSqlStatement> d_listQuery_stmt;
   unique_ptr<SSqlStatement> d_listSubZoneQuery_stmt;
   unique_ptr<SSqlStatement> d_MasterOfDomainsZoneQuery_stmt;

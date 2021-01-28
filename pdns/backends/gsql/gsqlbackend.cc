@@ -62,6 +62,8 @@ GSQLBackend::GSQLBackend(const string &mode, const string &suffix)
   d_IdQuery=getArg("id-query");
   d_ANYNoIdQuery=getArg("any-query");
   d_ANYIdQuery=getArg("any-id-query");
+  d_PvANYNoIdQuery=getArg("pv-any-query");
+  d_PvANYIdQuery=getArg("pv-any-id-query");
 
   d_listQuery=getArg("list-query");
   d_listSubZoneQuery=getArg("list-subzone-query");
@@ -134,6 +136,8 @@ GSQLBackend::GSQLBackend(const string &mode, const string &suffix)
   d_IdQuery_stmt = NULL;
   d_ANYNoIdQuery_stmt = NULL;
   d_ANYIdQuery_stmt = NULL;
+  d_PvANYNoIdQuery_stmt = NULL;
+  d_PvANYIdQuery_stmt = NULL;
   d_listQuery_stmt = NULL;
   d_listSubZoneQuery_stmt = NULL;
   d_InfoOfDomainsZoneQuery_stmt = NULL;
@@ -1123,13 +1127,13 @@ void GSQLBackend::lookup(const QType &qtype,const DNSName &qname, int domain_id,
     } else {
       // qtype==ANY
       if(domain_id < 0) {
-        d_query_name = "any-query";
-        d_query_stmt = &d_ANYNoIdQuery_stmt;
+        d_query_name = "pv-any-query";
+        d_query_stmt = &d_PvANYNoIdQuery_stmt;
         (*d_query_stmt)->
           bind("qname", qname);
       } else {
-        d_query_name = "any-id-query";
-        d_query_stmt = &d_ANYIdQuery_stmt;
+        d_query_name = "pv-any-id-query";
+        d_query_stmt = &d_PvANYIdQuery_stmt;
         (*d_query_stmt)->
           bind("qname", qname)->
           bind("domain_id", domain_id);
